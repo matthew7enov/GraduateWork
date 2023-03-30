@@ -22,9 +22,9 @@ class LoginViewController: UIViewController {
         login.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([
-            login.topAnchor.constraint(equalTo: view.topAnchor, constant: 100),
-            login.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
-            login.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16)
+            login.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 100),
+            login.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 16),
+            login.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -16)
         ])
         
         login.borderStyle = .roundedRect
@@ -43,8 +43,8 @@ class LoginViewController: UIViewController {
         
         NSLayoutConstraint.activate([
             password.topAnchor.constraint(equalTo: login.bottomAnchor, constant: 30),
-            password.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
-            password.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16)
+            password.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 16),
+            password.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -16)
         ])
         
         password.borderStyle = .roundedRect
@@ -66,8 +66,8 @@ class LoginViewController: UIViewController {
         NSLayoutConstraint.activate([
             authorizationButton.topAnchor.constraint(equalTo: password.bottomAnchor, constant: 30),
             authorizationButton.heightAnchor.constraint(equalToConstant: 30),
-            authorizationButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -50),
-            authorizationButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 50)
+            authorizationButton.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -50),
+            authorizationButton.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 50)
         ])
         
         authorizationButton.setTitle("Войти", for: .normal)
