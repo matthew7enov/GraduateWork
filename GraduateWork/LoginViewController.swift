@@ -9,15 +9,61 @@ import UIKit
 
 class LoginViewController: UIViewController {
 
-    var login = UITextField()
-    var password = UITextField()
-    let authorizationButton = UIButton()
-    var valodator = Validator()
+    var login: UITextField = {
+        
+        let textField = UITextField()
+        
+        textField.borderStyle = .roundedRect
+        textField.placeholder = "login"
+        textField.keyboardType = .default
+        textField.keyboardAppearance = .dark
+        textField.clearButtonMode = .whileEditing
+        textField.returnKeyType = .done
+        textField.enablesReturnKeyAutomatically = true
+        textField.autocorrectionType = .no
+        textField.smartInsertDeleteType = .no
+        
+        return textField
+    }()
+    
+    var password : UITextField = {
+       
+        let textField = UITextField()
+        
+        textField.borderStyle = .roundedRect
+        textField.placeholder = "Password"
+        textField.isSecureTextEntry = true
+        textField.keyboardType = .default
+        textField.keyboardAppearance = .dark
+        textField.clearButtonMode = .whileEditing
+        textField.returnKeyType = .done
+        textField.enablesReturnKeyAutomatically = true
+        
+        return textField
+    }()
+    
+    let authorizationButton : UIButton = {
+        
+       let button = UIButton()
+        
+        button.layer.borderColor = UIColor.darkGray.cgColor
+        button.layer.borderWidth = 1
+        button.layer.cornerRadius = 10
+        button.setTitle("Войти", for: .normal)
+        button.setTitleColor(.black, for: .normal)
+        
+        return button
+    }()
+    
+    var validator = Validator()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         view.addSubview(login)
+        view.addSubview(password)
+        view.addSubview(authorizationButton)
+        
         login.delegate = self
         login.translatesAutoresizingMaskIntoConstraints = false
         
@@ -27,17 +73,6 @@ class LoginViewController: UIViewController {
             login.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -16)
         ])
         
-        login.borderStyle = .roundedRect
-        login.placeholder = "login"
-        login.keyboardType = .default
-        login.keyboardAppearance = .dark
-        login.clearButtonMode = .whileEditing
-        login.returnKeyType = .done
-        login.enablesReturnKeyAutomatically = true
-        login.autocorrectionType = .no
-        login.smartInsertDeleteType = .no
-        
-        view.addSubview(password)
         password.delegate = self
         password.translatesAutoresizingMaskIntoConstraints = false
         
@@ -47,21 +82,6 @@ class LoginViewController: UIViewController {
             password.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -16)
         ])
         
-        password.borderStyle = .roundedRect
-        password.placeholder = "Password"
-        password.isSecureTextEntry = true
-        password.keyboardType = .default
-        password.keyboardAppearance = .dark
-        password.clearButtonMode = .whileEditing
-        password.returnKeyType = .done
-        password.enablesReturnKeyAutomatically = true
-        
-        view.addSubview(authorizationButton)
-        
-        authorizationButton.layer.borderColor = UIColor.darkGray.cgColor
-        authorizationButton.layer.borderWidth = 1
-        authorizationButton.layer.cornerRadius = 10
-        
         authorizationButton.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             authorizationButton.topAnchor.constraint(equalTo: password.bottomAnchor, constant: 30),
@@ -69,9 +89,7 @@ class LoginViewController: UIViewController {
             authorizationButton.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -50),
             authorizationButton.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 50)
         ])
-        
-        authorizationButton.setTitle("Войти", for: .normal)
-        authorizationButton.setTitleColor(.black, for: .normal)
+
     }
 
 }
@@ -91,7 +109,7 @@ extension LoginViewController: UITextFieldDelegate {
         case login:
             break
         case password:
-           return valodator.hasNumbers(text: string)
+           return validator.hasNumbers(text: string)
         default: break
         }
         return true
@@ -101,7 +119,7 @@ extension LoginViewController: UITextFieldDelegate {
         if textField.isEditing {
             return true
         }
-        return false
+        return textField.isEditing
     }
     
 }
