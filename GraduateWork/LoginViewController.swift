@@ -92,6 +92,12 @@ class LoginViewController: UIViewController {
             authorizationButton.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 50)
         ])
 
+        authorizationButton.addTarget(self, action: #selector(pushButtonAction), for: .touchUpInside)
+    }
+    
+    @objc func pushButtonAction() {
+        let controller = TableViewController()
+        navigationController?.pushViewController(controller, animated: true)
     }
 
 }
