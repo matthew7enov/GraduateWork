@@ -37,11 +37,21 @@ struct Source {
             .init(name: "Таня", image: .init(systemName: ImageName.person)!, description: Description.description, gender: .female),
             .init(name: "Маша", image: .init(systemName: ImageName.person)!, description: Description.description, gender: .female),
             .init(name: "Соня", image: .init(systemName: ImageName.person)!, description: Description.description, gender: .female),
+            .init(name: "Маша", image: .init(systemName: ImageName.person)!, description: Description.description, gender: .female),
+            .init(name: "Соня", image: .init(systemName: ImageName.person)!, description: Description.description, gender: .female),
+            .init(name: "Маша", image: .init(systemName: ImageName.person)!, description: Description.description, gender: .female),
+            .init(name: "Соня", image: .init(systemName: ImageName.person)!, description: Description.description, gender: .female),
+            .init(name: "Маша", image: .init(systemName: ImageName.person)!, description: Description.description, gender: .female),
+            .init(name: "Соня", image: .init(systemName: ImageName.person)!, description: Description.description, gender: .female),
             
-            .init(name: "Матвей", image: .init(systemName: ImageName.fillperson)!, description: Description.description, gender: .male),
-            .init(name: "Влад", image: .init(systemName: ImageName.fillperson)!, description: Description.description, gender: .male),
-            .init(name: "Кирилл", image: .init(systemName: ImageName.fillperson)!, description: Description.description, gender: .male),
-            .init(name: "Стас", image: .init(systemName: ImageName.fillperson)!, description: Description.description, gender: .male),
+            .init(name: "Матвей", image: .init(systemName: ImageName.fillperson)!, description: Description.description2, gender: .male),
+            .init(name: "Влад", image: .init(systemName: ImageName.fillperson)!, description: Description.description2, gender: .male),
+            .init(name: "Кирилл", image: .init(systemName: ImageName.fillperson)!, description: Description.description2, gender: .male),
+            .init(name: "Стас", image: .init(systemName: ImageName.fillperson)!, description: Description.description2, gender: .male),
+            .init(name: "Кирилл", image: .init(systemName: ImageName.fillperson)!, description: Description.description2, gender: .male),
+            .init(name: "Стас", image: .init(systemName: ImageName.fillperson)!, description: Description.description2, gender: .male),
+            .init(name: "Кирилл", image: .init(systemName: ImageName.fillperson)!, description: Description.description2, gender: .male),
+            .init(name: "Стас", image: .init(systemName: ImageName.fillperson)!, description: Description.description2, gender: .male)
         ]
     }
     

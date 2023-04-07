@@ -40,15 +40,15 @@ class ContactCell: UITableViewCell {
         NSLayoutConstraint.activate([
             avatar.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 16),
             avatar.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16),
-            avatar.heightAnchor.constraint(equalTo: contentView.heightAnchor, constant: 32),
-            avatar.widthAnchor.constraint(equalTo: contentView.widthAnchor, constant: 32),
+            avatar.heightAnchor.constraint(equalToConstant: 32),
+            avatar.widthAnchor.constraint(equalToConstant: 32),
             
             nameLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 16),
-            nameLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 8),
-            nameLabel.trailingAnchor.constraint(equalTo: avatar.trailingAnchor, constant: -8),
+            nameLabel.leadingAnchor.constraint(equalTo: avatar.trailingAnchor, constant: 8),
+            nameLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -8),
             
             descriptionLabel.topAnchor.constraint(equalTo: nameLabel.bottomAnchor),
-            descriptionLabel.leadingAnchor.constraint(equalTo: avatar.leadingAnchor, constant: 8),
+            descriptionLabel.leadingAnchor.constraint(equalTo: avatar.trailingAnchor, constant: 8),
             descriptionLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -8),
             descriptionLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -8)
         ])
