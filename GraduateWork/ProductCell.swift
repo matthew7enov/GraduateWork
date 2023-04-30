@@ -1,13 +1,13 @@
 //
-//  ContactCell.swift
+//  ProductCell.swift
 //  GraduateWork
 //
-//  Created by Matvey Semenov on 2.04.23.
+//  Created by Matvey Semenov on 11.04.23.
 //
 
 import UIKit
 
-class StorageCell: UITableViewCell {
+class ProductCell: UITableViewCell {
 
     let avatar = UIImageView()
     let nameLabel: UILabel = {
@@ -21,24 +21,23 @@ class StorageCell: UITableViewCell {
         label.textColor = .darkGray
         return label
     }()
-    let descriptionButton : UIButton = {
-        var button = UIButton()
-        button.setImage(UIImage(systemName: "arrowshape.turn.up.right"), for: .normal)
-        return button
+    let countLabel: UILabel = {
+       let label = UILabel()
+        label.font = UIFont.systemFont(ofSize: 14)
+        return label
     }()
-    var tapAction : (() -> Void)?
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-        setupCell()
+        setupProductCell()
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-    private func setupCell() {
-        [avatar, nameLabel, descriptionLabel,descriptionButton].forEach {
+    private func setupProductCell() {
+        [avatar, nameLabel,descriptionLabel, countLabel].forEach {
             $0.translatesAutoresizingMaskIntoConstraints = false
             contentView.addSubview($0)
         }
@@ -49,32 +48,26 @@ class StorageCell: UITableViewCell {
             avatar.heightAnchor.constraint(equalToConstant: 32),
             avatar.widthAnchor.constraint(equalToConstant: 32),
             
+            
             nameLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 16),
             nameLabel.leadingAnchor.constraint(equalTo: avatar.trailingAnchor, constant: 8),
-            nameLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -8),
+            nameLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -50),
             
+            countLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 16),
+            countLabel.leadingAnchor.constraint(equalTo: nameLabel.trailingAnchor, constant: 5),
+            countLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -10),
+
             descriptionLabel.topAnchor.constraint(equalTo: nameLabel.bottomAnchor),
             descriptionLabel.leadingAnchor.constraint(equalTo: avatar.trailingAnchor, constant: 8),
-            descriptionLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -55),
-            descriptionLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -8),
-            
-            descriptionButton.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 10),
-            descriptionButton.widthAnchor.constraint(equalToConstant: 40),
-            descriptionButton.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -5),
-            descriptionButton.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -10)
+            descriptionLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -8),
+            descriptionLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -8)
         ])
-        
-        descriptionButton.addTarget(self, action: #selector(descriptionButtonPressed), for: .touchUpInside)
-        
-    }
-    @objc func descriptionButtonPressed() {
-        tapAction?()
     }
     
-    
-    func configure(contact: Storage) {
-        avatar.image = contact.image
-        nameLabel.text = contact.name
-        descriptionLabel.text = contact.description
+    func configure(product: ProductList) {
+        avatar.image = product.image
+        nameLabel.text = product.name
+        descriptionLabel.text = product.descriptionCategory
+        countLabel.text = "\(product.count) шт"
     }
 }

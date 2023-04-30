@@ -14,6 +14,10 @@ class LoginViewController: UIViewController {
         
         let textField = UITextField()
         
+        textField.layer.borderWidth = 1
+        textField.layer.cornerRadius = 8
+        textField.layer.borderColor = UIColor.gray.cgColor
+        
         textField.borderStyle = .roundedRect
         textField.placeholder = "login"
         textField.keyboardType = .default
@@ -30,6 +34,10 @@ class LoginViewController: UIViewController {
     var password : UITextField = {
        
         let textField = UITextField()
+        
+        textField.layer.borderWidth = 1
+        textField.layer.cornerRadius = 8
+        textField.layer.borderColor = UIColor.gray.cgColor
         
         textField.borderStyle = .roundedRect
         textField.placeholder = "Password"
