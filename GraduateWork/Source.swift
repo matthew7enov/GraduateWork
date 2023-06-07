@@ -8,56 +8,29 @@
 import Foundation
 import UIKit
 
-struct Contact {
+struct Storage {
     let name: String
     let image: UIImage
     let description: String
-    let gender: Gender
-}
-
-enum Gender {
-    case male
-    case female
 }
 
 struct ImageName {
-    static let person = "person"
-    static let fillperson = "person.fill"
+    static let stack = "square.stack.3d.down.forward.fill"
 }
 
 struct Description {
-    static let description = "девушка"
-    static let description2 = "парень"
+    static let address1 = "Пр. Независимости 87"
+    static let address2 = "Ул. Якуба Коласа 1"
+    static let address3 = "Ул. Пулихова 44"
 }
 
 struct Source {
-    static func makeContacts() -> [Contact] {
+    static func makeStorage() -> [Storage] {
         [
-            .init(name: "Алиса", image: .init(systemName: ImageName.person)!, description: Description.description, gender: .female),
-            .init(name: "Таня", image: .init(systemName: ImageName.person)!, description: Description.description, gender: .female),
-            .init(name: "Маша", image: .init(systemName: ImageName.person)!, description: Description.description, gender: .female),
-            .init(name: "Соня", image: .init(systemName: ImageName.person)!, description: Description.description, gender: .female),
-            .init(name: "Маша", image: .init(systemName: ImageName.person)!, description: Description.description, gender: .female),
-            .init(name: "Соня", image: .init(systemName: ImageName.person)!, description: Description.description, gender: .female),
-            .init(name: "Маша", image: .init(systemName: ImageName.person)!, description: Description.description, gender: .female),
-            .init(name: "Соня", image: .init(systemName: ImageName.person)!, description: Description.description, gender: .female),
-            .init(name: "Маша", image: .init(systemName: ImageName.person)!, description: Description.description, gender: .female),
-            .init(name: "Соня", image: .init(systemName: ImageName.person)!, description: Description.description, gender: .female),
-            
-            .init(name: "Матвей", image: .init(systemName: ImageName.fillperson)!, description: Description.description2, gender: .male),
-            .init(name: "Влад", image: .init(systemName: ImageName.fillperson)!, description: Description.description2, gender: .male),
-            .init(name: "Кирилл", image: .init(systemName: ImageName.fillperson)!, description: Description.description2, gender: .male),
-            .init(name: "Стас", image: .init(systemName: ImageName.fillperson)!, description: Description.description2, gender: .male),
-            .init(name: "Кирилл", image: .init(systemName: ImageName.fillperson)!, description: Description.description2, gender: .male),
-            .init(name: "Стас", image: .init(systemName: ImageName.fillperson)!, description: Description.description2, gender: .male),
-            .init(name: "Кирилл", image: .init(systemName: ImageName.fillperson)!, description: Description.description2, gender: .male),
-            .init(name: "Стас", image: .init(systemName: ImageName.fillperson)!, description: Description.description2, gender: .male)
+            .init(name: "Склад №1", image: .init(systemName: ImageName.stack)!, description: Description.address1),
+            .init(name: "Склад №2", image: .init(systemName: ImageName.stack)!, description: Description.address2),
+            .init(name: "Склад №3", image: .init(systemName: ImageName.stack)!, description: Description.address3)
         ]
     }
     
-    static func makeContactsWithGroup() -> [[Contact]] {
-        let male = makeContacts().filter {$0.gender == .male}
-        let female = makeContacts().filter {$0.gender == .female}
-        return [male,female]
-    }
 }

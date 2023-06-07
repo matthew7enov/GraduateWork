@@ -15,6 +15,15 @@
 		F014954629D467E300C6986C /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F014954529D467E300C6986C /* LoginViewController.swift */; };
 		F014954B29D467E500C6986C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F014954A29D467E500C6986C /* Assets.xcassets */; };
 		F014954E29D467E500C6986C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F014954C29D467E500C6986C /* LaunchScreen.storyboard */; };
+		F0B001262A30A3AE001408C9 /* StoragePickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0B001252A30A3AE001408C9 /* StoragePickerViewController.swift */; };
+		F0B001282A30D3DF001408C9 /* ScannerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0B001272A30D3DF001408C9 /* ScannerViewController.swift */; };
+		F0B9DA3129FAAE3600AD7516 /* ProductDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0B9DA3029FAAE3600AD7516 /* ProductDetailsViewController.swift */; };
+		F0B9DA3329FC68E500AD7516 /* PickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0B9DA3229FC68E500AD7516 /* PickerViewController.swift */; };
+		F0B9DA3529FC798B00AD7516 /* UserAccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0B9DA3429FC798B00AD7516 /* UserAccountViewController.swift */; };
+		F0B9DA3729FD78EA00AD7516 /* StorageDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0B9DA3629FD78EA00AD7516 /* StorageDetailsViewController.swift */; };
+		F0D0F8BC29E5CEAF003E5694 /* ProductListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0D0F8BB29E5CEAF003E5694 /* ProductListViewController.swift */; };
+		F0D0F8BE29E5CF24003E5694 /* Product.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0D0F8BD29E5CF24003E5694 /* Product.swift */; };
+		F0D0F8C029E5CFE2003E5694 /* ProductCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0D0F8BF29E5CFE2003E5694 /* ProductCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +37,15 @@
 		F014954A29D467E500C6986C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F014954D29D467E500C6986C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		F014954F29D467E500C6986C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F0B001252A30A3AE001408C9 /* StoragePickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoragePickerViewController.swift; sourceTree = "<group>"; };
+		F0B001272A30D3DF001408C9 /* ScannerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScannerViewController.swift; sourceTree = "<group>"; };
+		F0B9DA3029FAAE3600AD7516 /* ProductDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductDetailsViewController.swift; sourceTree = "<group>"; };
+		F0B9DA3229FC68E500AD7516 /* PickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickerViewController.swift; sourceTree = "<group>"; };
+		F0B9DA3429FC798B00AD7516 /* UserAccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAccountViewController.swift; sourceTree = "<group>"; };
+		F0B9DA3629FD78EA00AD7516 /* StorageDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageDetailsViewController.swift; sourceTree = "<group>"; };
+		F0D0F8BB29E5CEAF003E5694 /* ProductListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductListViewController.swift; sourceTree = "<group>"; };
+		F0D0F8BD29E5CF24003E5694 /* Product.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Product.swift; sourceTree = "<group>"; };
+		F0D0F8BF29E5CFE2003E5694 /* ProductCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -69,6 +87,15 @@
 				F003285029D9CBD400898E7A /* Source.swift */,
 				F003285229D9CEB300898E7A /* ContactCell.swift */,
 				F003285629D9D50600898E7A /* TableViewController.swift */,
+				F0D0F8BB29E5CEAF003E5694 /* ProductListViewController.swift */,
+				F0B001272A30D3DF001408C9 /* ScannerViewController.swift */,
+				F0D0F8BD29E5CF24003E5694 /* Product.swift */,
+				F0D0F8BF29E5CFE2003E5694 /* ProductCell.swift */,
+				F0B9DA3029FAAE3600AD7516 /* ProductDetailsViewController.swift */,
+				F0B9DA3229FC68E500AD7516 /* PickerViewController.swift */,
+				F0B001252A30A3AE001408C9 /* StoragePickerViewController.swift */,
+				F0B9DA3429FC798B00AD7516 /* UserAccountViewController.swift */,
+				F0B9DA3629FD78EA00AD7516 /* StorageDetailsViewController.swift */,
 			);
 			path = GraduateWork;
 			sourceTree = "<group>";
@@ -144,11 +171,20 @@
 			buildActionMask = 2147483647;
 			files = (
 				F003285329D9CEB300898E7A /* ContactCell.swift in Sources */,
+				F0D0F8BE29E5CF24003E5694 /* Product.swift in Sources */,
+				F0B001262A30A3AE001408C9 /* StoragePickerViewController.swift in Sources */,
 				F003285729D9D50600898E7A /* TableViewController.swift in Sources */,
+				F0B9DA3129FAAE3600AD7516 /* ProductDetailsViewController.swift in Sources */,
+				F0D0F8BC29E5CEAF003E5694 /* ProductListViewController.swift in Sources */,
+				F0B9DA3529FC798B00AD7516 /* UserAccountViewController.swift in Sources */,
 				F003285129D9CBD400898E7A /* Source.swift in Sources */,
 				F014954629D467E300C6986C /* LoginViewController.swift in Sources */,
+				F0B9DA3329FC68E500AD7516 /* PickerViewController.swift in Sources */,
+				F0D0F8C029E5CFE2003E5694 /* ProductCell.swift in Sources */,
 				F014954229D467E300C6986C /* AppDelegate.swift in Sources */,
 				F014954429D467E300C6986C /* SceneDelegate.swift in Sources */,
+				F0B001282A30D3DF001408C9 /* ScannerViewController.swift in Sources */,
+				F0B9DA3729FD78EA00AD7516 /* StorageDetailsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

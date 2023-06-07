@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ContactCell: UITableViewCell {
+class StorageCell: UITableViewCell {
 
     let avatar = UIImageView()
     let nameLabel: UILabel = {
@@ -21,6 +21,12 @@ class ContactCell: UITableViewCell {
         label.textColor = .darkGray
         return label
     }()
+    let descriptionButton : UIButton = {
+        var button = UIButton()
+        button.setImage(UIImage(systemName: "info.circle"), for: .normal)
+        return button
+    }()
+    var tapAction : (() -> Void)?
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -32,7 +38,7 @@ class ContactCell: UITableViewCell {
     }
     
     private func setupCell() {
-        [avatar, nameLabel, descriptionLabel].forEach {
+        [avatar, nameLabel, descriptionLabel,descriptionButton].forEach {
             $0.translatesAutoresizingMaskIntoConstraints = false
             contentView.addSubview($0)
         }
@@ -49,12 +55,24 @@ class ContactCell: UITableViewCell {
             
             descriptionLabel.topAnchor.constraint(equalTo: nameLabel.bottomAnchor),
             descriptionLabel.leadingAnchor.constraint(equalTo: avatar.trailingAnchor, constant: 8),
-            descriptionLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -8),
-            descriptionLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -8)
+            descriptionLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -55),
+            descriptionLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -8),
+            
+            descriptionButton.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 10),
+            descriptionButton.widthAnchor.constraint(equalToConstant: 40),
+            descriptionButton.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -5),
+            descriptionButton.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -10)
         ])
+        
+        descriptionButton.addTarget(self, action: #selector(descriptionButtonPressed), for: .touchUpInside)
+        
+    }
+    @objc func descriptionButtonPressed() {
+        tapAction?()
     }
     
-    func configure(contact: Contact) {
+    
+    func configure(contact: Storage) {
         avatar.image = contact.image
         nameLabel.text = contact.name
         descriptionLabel.text = contact.description
