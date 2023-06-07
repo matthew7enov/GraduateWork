@@ -88,6 +88,11 @@ extension ProductListViewController: UITableViewDataSource {
         
         cell.configure(product: product[indexPath.row])
         
+        cell.tapAction = {[weak self] in
+            let controller = StoragePickerViewController()
+            self?.navigationController?.pushViewController(controller, animated: true)
+        }
+        
         return cell
     }
     
