@@ -23,7 +23,7 @@ class StorageCell: UITableViewCell {
     }()
     let descriptionButton : UIButton = {
         var button = UIButton()
-        button.setImage(UIImage(systemName: "arrowshape.turn.up.right"), for: .normal)
+        button.setImage(UIImage(systemName: "info.circle"), for: .normal)
         return button
     }()
     var tapAction : (() -> Void)?

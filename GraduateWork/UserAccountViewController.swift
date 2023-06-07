@@ -34,7 +34,6 @@ class UserAccountViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        title = "Account"
         view.backgroundColor = .white
         
         view.addSubview(personImage)
@@ -47,7 +46,7 @@ class UserAccountViewController: UIViewController {
             personImage.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 30),
             personImage.widthAnchor.constraint(equalToConstant: 100),
             personImage.heightAnchor.constraint(equalToConstant: 100),
-            personImage.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: -250),
+            personImage.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: -280),
             personImage.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: 0)
         ])
         

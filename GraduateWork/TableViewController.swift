@@ -55,12 +55,12 @@ extension TableViewController: UITableViewDelegate {
         navigationController?.pushViewController(controller, animated: true)
     }
 }
-extension TableViewController {
-    @objc func descriptionButtonPressed() {
-        let controller = UserAccountViewController()
-        navigationController?.pushViewController(controller, animated: true)
-    }
-}
+//extension TableViewController {
+//    @objc func descriptionButtonPressed() {
+//        let controller = UserAccountViewController()
+//        navigationController?.pushViewController(controller, animated: true)
+//    }
+//}
 
 extension TableViewController {
     func setupTableView() {

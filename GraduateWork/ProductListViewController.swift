@@ -7,22 +7,75 @@
 
 import UIKit
 
-class ProductListViewController: UIViewController {
+class ProductListViewController: UIViewController, UISearchResultsUpdating, UISearchBarDelegate {
+    
+    
 
     var product = ProductListSource.makeProductListView()
     let tableView: UITableView = .init()
+    let searchController = UISearchController()
+    var products = [ProductList]()
+    var filteredProducts = [ProductList]()
+    
+    
+    
+    func initSearchController(){
+        searchController.loadViewIfNeeded()
+        searchController.searchResultsUpdater = self
+        searchController.obscuresBackgroundDuringPresentation = false
+        searchController.searchBar.enablesReturnKeyAutomatically = false
+        searchController.searchBar.returnKeyType = UIReturnKeyType.done
+        definesPresentationContext = true
+
+        navigationItem.searchController = searchController
+        navigationItem.hidesSearchBarWhenScrolling = false
+        searchController.searchBar.scopeButtonTitles = ["All","🥩","🥤","🍿","🥛","🍞","🍣","🍫","🥥"]
+        searchController.searchBar.delegate = self
+        
+    }
+    
+    func updateSearchResults(for searchController: UISearchController) {
+               let searchBar  = searchController.searchBar
+               let scopeButton = searchBar.scopeButtonTitles![searchBar.selectedScopeButtonIndex]
+               let searchText = searchBar.text!
+
+               filterForSearchTextAndScopeButton(searchText: searchText, scopeButton: scopeButton)
+    }
+    
+    func filterForSearchTextAndScopeButton(searchText: String, scopeButton: String = "All"){
+        filteredProducts = products.filter{
+            let scopeMatch = (scopeButton == "All" || $0.category.emojiValue == scopeButton)
+            if(searchController.searchBar.text != ""){
+                let searchTextMatch = $0.name.lowercased().contains(searchText.lowercased())
+
+                return scopeMatch && searchTextMatch
+            } else {
+                return scopeMatch
+            }
+        }
+        tableView.reloadData()
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
+        title = "Склад №2"
+        navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "plus"), style: .plain, target: self, action: #selector(scannerButtomPressed))
+        searchController.searchBar.placeholder = "Поиск"
+        navigationItem.searchController = searchController
+        
         setupProductListTableView()
-        
+        initSearchController()
         tableView.register(ProductCell.self, forCellReuseIdentifier: "ProductCell")
-        
         tableView.dataSource = self
         tableView.delegate = self
     }
 
+    @objc func scannerButtomPressed() {
+        let controller = ScannerViewController()
+        navigationController?.pushViewController(controller, animated: true)
+    }
+    
 }
 
 extension ProductListViewController: UITableViewDataSource {

@@ -104,8 +104,18 @@ class LoginViewController: UIViewController {
     }
     
     @objc func pushButtonAction() {
+        let tabBarController = UITabBarController()
         let controller = TableViewController()
-        navigationController?.pushViewController(controller, animated: true)
+        let navigation =  UINavigationController.init(rootViewController: controller)
+        let userController = UserAccountViewController()
+        navigation.tabBarItem.title = "Список"
+        navigation.tabBarItem.image = UIImage(systemName: "list.bullet.rectangle")
+        userController.tabBarItem.title = "Аккаунт"
+        userController.tabBarItem.image = UIImage(systemName: "person.fill")
+        tabBarController.viewControllers = [navigation, userController]
+        UIApplication.shared.keyWindow?.rootViewController = tabBarController
+//        navigationController?.pushViewController(tabBarController, animated: true)
+        
     }
 
 }
