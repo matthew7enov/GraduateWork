@@ -7,7 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		F003285129D9CBD400898E7A /* Source.swift in Sources */ = {isa = PBXBuildFile; fileRef = F003285029D9CBD400898E7A /* Source.swift */; };
+		30DA55EA2A311E2200F92A3D /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30DA55E92A311E2200F92A3D /* AppCoordinator.swift */; };
+		30DA55EF2A311E3300F92A3D /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30DA55EC2A311E3300F92A3D /* User.swift */; };
+		30DA55F02A311E3300F92A3D /* ProductAPIModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30DA55ED2A311E3300F92A3D /* ProductAPIModel.swift */; };
+		30DA55F52A311E5E00F92A3D /* UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30DA55F32A311E5E00F92A3D /* UserService.swift */; };
+		30DA55F62A311E5E00F92A3D /* DataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30DA55F42A311E5E00F92A3D /* DataProvider.swift */; };
+		30DA55F82A31225B00F92A3D /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 30DA55F72A31225B00F92A3D /* GoogleService-Info.plist */; };
+		30DA55FA2A31298800F92A3D /* StorageAPIModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30DA55F92A31298800F92A3D /* StorageAPIModel.swift */; };
+		8044F634AB2879EC33DDB9AF /* Pods_GraduateWork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 442A76EF25EC72494BE14B4A /* Pods_GraduateWork.framework */; };
+		F003285129D9CBD400898E7A /* Storage.swift in Sources */ = {isa = PBXBuildFile; fileRef = F003285029D9CBD400898E7A /* Storage.swift */; };
 		F003285329D9CEB300898E7A /* ContactCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F003285229D9CEB300898E7A /* ContactCell.swift */; };
 		F003285729D9D50600898E7A /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F003285629D9D50600898E7A /* TableViewController.swift */; };
 		F014954229D467E300C6986C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F014954129D467E300C6986C /* AppDelegate.swift */; };
@@ -15,10 +23,28 @@
 		F014954629D467E300C6986C /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F014954529D467E300C6986C /* LoginViewController.swift */; };
 		F014954B29D467E500C6986C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F014954A29D467E500C6986C /* Assets.xcassets */; };
 		F014954E29D467E500C6986C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F014954C29D467E500C6986C /* LaunchScreen.storyboard */; };
+		F0B001262A30A3AE001408C9 /* StoragePickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0B001252A30A3AE001408C9 /* StoragePickerViewController.swift */; };
+		F0B001282A30D3DF001408C9 /* ScannerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0B001272A30D3DF001408C9 /* ScannerViewController.swift */; };
+		F0B9DA3129FAAE3600AD7516 /* ProductDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0B9DA3029FAAE3600AD7516 /* ProductDetailsViewController.swift */; };
+		F0B9DA3329FC68E500AD7516 /* PickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0B9DA3229FC68E500AD7516 /* PickerViewController.swift */; };
+		F0B9DA3529FC798B00AD7516 /* UserAccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0B9DA3429FC798B00AD7516 /* UserAccountViewController.swift */; };
+		F0B9DA3729FD78EA00AD7516 /* StorageDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0B9DA3629FD78EA00AD7516 /* StorageDetailsViewController.swift */; };
+		F0D0F8BC29E5CEAF003E5694 /* ProductListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0D0F8BB29E5CEAF003E5694 /* ProductListViewController.swift */; };
+		F0D0F8BE29E5CF24003E5694 /* Product.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0D0F8BD29E5CF24003E5694 /* Product.swift */; };
+		F0D0F8C029E5CFE2003E5694 /* ProductCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0D0F8BF29E5CFE2003E5694 /* ProductCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		F003285029D9CBD400898E7A /* Source.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Source.swift; sourceTree = "<group>"; };
+		30DA55E92A311E2200F92A3D /* AppCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
+		30DA55EC2A311E3300F92A3D /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		30DA55ED2A311E3300F92A3D /* ProductAPIModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductAPIModel.swift; sourceTree = "<group>"; };
+		30DA55F32A311E5E00F92A3D /* UserService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserService.swift; sourceTree = "<group>"; };
+		30DA55F42A311E5E00F92A3D /* DataProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataProvider.swift; sourceTree = "<group>"; };
+		30DA55F72A31225B00F92A3D /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		30DA55F92A31298800F92A3D /* StorageAPIModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageAPIModel.swift; sourceTree = "<group>"; };
+		442A76EF25EC72494BE14B4A /* Pods_GraduateWork.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GraduateWork.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		6016DA26C3186E2258F6850D /* Pods-GraduateWork.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GraduateWork.debug.xcconfig"; path = "Target Support Files/Pods-GraduateWork/Pods-GraduateWork.debug.xcconfig"; sourceTree = "<group>"; };
+		F003285029D9CBD400898E7A /* Storage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Storage.swift; sourceTree = "<group>"; };
 		F003285229D9CEB300898E7A /* ContactCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactCell.swift; sourceTree = "<group>"; };
 		F003285629D9D50600898E7A /* TableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewController.swift; sourceTree = "<group>"; };
 		F014953E29D467E300C6986C /* GraduateWork.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GraduateWork.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -28,6 +54,16 @@
 		F014954A29D467E500C6986C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F014954D29D467E500C6986C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		F014954F29D467E500C6986C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F0B001252A30A3AE001408C9 /* StoragePickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoragePickerViewController.swift; sourceTree = "<group>"; };
+		F0B001272A30D3DF001408C9 /* ScannerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScannerViewController.swift; sourceTree = "<group>"; };
+		F0B9DA3029FAAE3600AD7516 /* ProductDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductDetailsViewController.swift; sourceTree = "<group>"; };
+		F0B9DA3229FC68E500AD7516 /* PickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickerViewController.swift; sourceTree = "<group>"; };
+		F0B9DA3429FC798B00AD7516 /* UserAccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAccountViewController.swift; sourceTree = "<group>"; };
+		F0B9DA3629FD78EA00AD7516 /* StorageDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageDetailsViewController.swift; sourceTree = "<group>"; };
+		F0D0F8BB29E5CEAF003E5694 /* ProductListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductListViewController.swift; sourceTree = "<group>"; };
+		F0D0F8BD29E5CF24003E5694 /* Product.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Product.swift; sourceTree = "<group>"; };
+		F0D0F8BF29E5CFE2003E5694 /* ProductCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductCell.swift; sourceTree = "<group>"; };
+		F10D38B908AA28E58210E376 /* Pods-GraduateWork.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GraduateWork.release.xcconfig"; path = "Target Support Files/Pods-GraduateWork/Pods-GraduateWork.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -35,17 +71,58 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8044F634AB2879EC33DDB9AF /* Pods_GraduateWork.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1662A36D89FBD3D3CA62595C /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				6016DA26C3186E2258F6850D /* Pods-GraduateWork.debug.xcconfig */,
+				F10D38B908AA28E58210E376 /* Pods-GraduateWork.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		30DA55EB2A311E3300F92A3D /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				F003285029D9CBD400898E7A /* Storage.swift */,
+				F0D0F8BD29E5CF24003E5694 /* Product.swift */,
+				30DA55EC2A311E3300F92A3D /* User.swift */,
+				30DA55ED2A311E3300F92A3D /* ProductAPIModel.swift */,
+				30DA55F92A31298800F92A3D /* StorageAPIModel.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		30DA55F22A311E5E00F92A3D /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				30DA55F32A311E5E00F92A3D /* UserService.swift */,
+				30DA55F42A311E5E00F92A3D /* DataProvider.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		458A7D20BCD489D97A892445 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				442A76EF25EC72494BE14B4A /* Pods_GraduateWork.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		F014953529D467E200C6986C = {
 			isa = PBXGroup;
 			children = (
 				F014954029D467E300C6986C /* GraduateWork */,
 				F014953F29D467E300C6986C /* Products */,
+				1662A36D89FBD3D3CA62595C /* Pods */,
+				458A7D20BCD489D97A892445 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -60,15 +137,26 @@
 		F014954029D467E300C6986C /* GraduateWork */ = {
 			isa = PBXGroup;
 			children = (
+				30DA55F72A31225B00F92A3D /* GoogleService-Info.plist */,
+				30DA55E92A311E2200F92A3D /* AppCoordinator.swift */,
 				F014954129D467E300C6986C /* AppDelegate.swift */,
 				F014954329D467E300C6986C /* SceneDelegate.swift */,
 				F014954529D467E300C6986C /* LoginViewController.swift */,
 				F014954A29D467E500C6986C /* Assets.xcassets */,
 				F014954C29D467E500C6986C /* LaunchScreen.storyboard */,
 				F014954F29D467E500C6986C /* Info.plist */,
-				F003285029D9CBD400898E7A /* Source.swift */,
 				F003285229D9CEB300898E7A /* ContactCell.swift */,
 				F003285629D9D50600898E7A /* TableViewController.swift */,
+				F0D0F8BB29E5CEAF003E5694 /* ProductListViewController.swift */,
+				F0B001272A30D3DF001408C9 /* ScannerViewController.swift */,
+				F0D0F8BF29E5CFE2003E5694 /* ProductCell.swift */,
+				F0B9DA3029FAAE3600AD7516 /* ProductDetailsViewController.swift */,
+				F0B9DA3229FC68E500AD7516 /* PickerViewController.swift */,
+				F0B001252A30A3AE001408C9 /* StoragePickerViewController.swift */,
+				F0B9DA3429FC798B00AD7516 /* UserAccountViewController.swift */,
+				F0B9DA3629FD78EA00AD7516 /* StorageDetailsViewController.swift */,
+				30DA55F22A311E5E00F92A3D /* Services */,
+				30DA55EB2A311E3300F92A3D /* Models */,
 			);
 			path = GraduateWork;
 			sourceTree = "<group>";
@@ -80,9 +168,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = F014955229D467E500C6986C /* Build configuration list for PBXNativeTarget "GraduateWork" */;
 			buildPhases = (
+				BEB7C098B79B4CC2DF222D86 /* [CP] Check Pods Manifest.lock */,
 				F014953A29D467E300C6986C /* Sources */,
 				F014953B29D467E300C6986C /* Frameworks */,
 				F014953C29D467E300C6986C /* Resources */,
+				98F33415191B2C9AB17F33EE /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -132,23 +222,81 @@
 			buildActionMask = 2147483647;
 			files = (
 				F014954E29D467E500C6986C /* LaunchScreen.storyboard in Resources */,
+				30DA55F82A31225B00F92A3D /* GoogleService-Info.plist in Resources */,
 				F014954B29D467E500C6986C /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		98F33415191B2C9AB17F33EE /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-GraduateWork/Pods-GraduateWork-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-GraduateWork/Pods-GraduateWork-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-GraduateWork/Pods-GraduateWork-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		BEB7C098B79B4CC2DF222D86 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-GraduateWork-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		F014953A29D467E300C6986C /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				30DA55FA2A31298800F92A3D /* StorageAPIModel.swift in Sources */,
 				F003285329D9CEB300898E7A /* ContactCell.swift in Sources */,
+				F0D0F8BE29E5CF24003E5694 /* Product.swift in Sources */,
+				30DA55F62A311E5E00F92A3D /* DataProvider.swift in Sources */,
+				F0B001262A30A3AE001408C9 /* StoragePickerViewController.swift in Sources */,
 				F003285729D9D50600898E7A /* TableViewController.swift in Sources */,
-				F003285129D9CBD400898E7A /* Source.swift in Sources */,
+				30DA55F02A311E3300F92A3D /* ProductAPIModel.swift in Sources */,
+				30DA55EA2A311E2200F92A3D /* AppCoordinator.swift in Sources */,
+				F0B9DA3129FAAE3600AD7516 /* ProductDetailsViewController.swift in Sources */,
+				F0D0F8BC29E5CEAF003E5694 /* ProductListViewController.swift in Sources */,
+				30DA55EF2A311E3300F92A3D /* User.swift in Sources */,
+				F0B9DA3529FC798B00AD7516 /* UserAccountViewController.swift in Sources */,
+				F003285129D9CBD400898E7A /* Storage.swift in Sources */,
 				F014954629D467E300C6986C /* LoginViewController.swift in Sources */,
+				F0B9DA3329FC68E500AD7516 /* PickerViewController.swift in Sources */,
+				30DA55F52A311E5E00F92A3D /* UserService.swift in Sources */,
+				F0D0F8C029E5CFE2003E5694 /* ProductCell.swift in Sources */,
 				F014954229D467E300C6986C /* AppDelegate.swift in Sources */,
 				F014954429D467E300C6986C /* SceneDelegate.swift in Sources */,
+				F0B001282A30D3DF001408C9 /* ScannerViewController.swift in Sources */,
+				F0B9DA3729FD78EA00AD7516 /* StorageDetailsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -282,24 +430,28 @@
 		};
 		F014955329D467E500C6986C /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6016DA26C3186E2258F6850D /* Pods-GraduateWork.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 9JNM7QCXRZ;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = GraduateWork/Info.plist;
+				INFOPLIST_KEY_NSCameraUsageDescription = "Нужен доступ к камере, чтобы отсканировать штрих код товара";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Для определения местоположения";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIStatusBarStyle = "";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.sm.GraduateWork;
+				PRODUCT_BUNDLE_IDENTIFIER = com.sv.GraduateWork;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -309,24 +461,28 @@
 		};
 		F014955429D467E500C6986C /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = F10D38B908AA28E58210E376 /* Pods-GraduateWork.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 9JNM7QCXRZ;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = GraduateWork/Info.plist;
+				INFOPLIST_KEY_NSCameraUsageDescription = "Нужен доступ к камере, чтобы отсканировать штрих код товара";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Для определения местоположения";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIStatusBarStyle = "";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.sm.GraduateWork;
+				PRODUCT_BUNDLE_IDENTIFIER = com.sv.GraduateWork;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
