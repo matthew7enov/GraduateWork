@@ -9,6 +9,15 @@ import UIKit
 
 class PickerViewController: UIViewController {
 
+    var values: [String] = [] {
+        didSet {
+            guard isViewLoaded else { return }
+            pickerView.reloadAllComponents()
+        }
+    }
+    var didSelectAction: ((Int) -> Void)?
+    var selectedRow: Int = 0
+
     var contentView = UIView()
     var pickerView = UIPickerView()
     var cancelButton : UIButton = {
@@ -77,6 +86,7 @@ class PickerViewController: UIViewController {
         dismiss(animated: true)
     }
     @objc func doneButtonPressed() {
+        didSelectAction?(selectedRow)
         dismiss(animated: true)
     }
 
@@ -84,7 +94,11 @@ class PickerViewController: UIViewController {
 
 extension PickerViewController : UIPickerViewDelegate {
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        return "\(row)"
+        return values[row]
+    }
+
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        selectedRow = row
     }
 }
 
@@ -94,8 +108,6 @@ extension PickerViewController : UIPickerViewDataSource {
     }
     
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        10
+        return values.count
     }
-    
-    
 }

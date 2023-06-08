@@ -10,6 +10,8 @@ import MapKit
 
 class StorageDetailsViewController: UIViewController {
 
+    let storage: Storage
+
     let locationManager = CLLocationManager()
     
     var mapKitView : MKMapView = {
@@ -33,24 +35,32 @@ class StorageDetailsViewController: UIViewController {
         label.text = "Пр. Независимости 87"
         return label
     }()
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
+
+    init(storage: Storage) {
+        self.storage = storage
+        super.init(nibName: nil, bundle: nil)
+    }
+
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+
+    override func loadView() {
+        super.loadView()
         view.backgroundColor = .white
-        
+
         view.addSubview(mapKitView)
         view.addSubview(storageNameLabel)
         view.addSubview(storageAddressLabel)
-        
+
         mapKitView.translatesAutoresizingMaskIntoConstraints = false
-        mapKitView.delegate = self
         NSLayoutConstraint.activate([
             mapKitView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 5),
             mapKitView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 10),
             mapKitView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -10),
             mapKitView.heightAnchor.constraint(equalToConstant: 300)
         ])
-        
+
         storageNameLabel.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             storageNameLabel.topAnchor.constraint(equalTo: mapKitView.bottomAnchor, constant: 30),
@@ -58,7 +68,7 @@ class StorageDetailsViewController: UIViewController {
             storageNameLabel.widthAnchor.constraint(equalToConstant: 100),
             storageNameLabel.heightAnchor.constraint(equalToConstant: 34)
         ])
-        
+
         storageAddressLabel.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             storageAddressLabel.topAnchor.constraint(equalTo: storageNameLabel.bottomAnchor, constant: 15),
@@ -66,40 +76,35 @@ class StorageDetailsViewController: UIViewController {
             storageAddressLabel.widthAnchor.constraint(equalToConstant: 180),
             storageAddressLabel.heightAnchor.constraint(equalToConstant: 34)
         ])
-        
     }
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        checkLocationEnable()
-    }
-    func checkLocationEnable() {
-        if CLLocationManager.locationServicesEnabled() {
-            setupManager()
-            checkAuthorization()
-        } else {
-            showAlertLocation(title: "Система геолокации выключена", message: "Хотите ее включить?", url: URL(string: "App-Prefs:root=LOCATION_SERVICES"))
-        }
-    }
-    func setupManager() {
-        locationManager.delegate = self
-        locationManager.desiredAccuracy = kCLLocationAccuracyBest
-    }
-    func checkAuthorization() {
-        switch CLLocationManager.authorizationStatus(){
-        case .authorizedAlways:
-            break
-        case .authorizedWhenInUse:
-            mapKitView.showsUserLocation = true
-            locationManager.startUpdatingLocation()
-            break
-        case .denied:
-            showAlertLocation(title: "Использование геолокации запрещено", message: "Хотите ее включить?", url: URL(string: UIApplication.openSettingsURLString))
-            break
-        case .restricted:
-            break
-        case .notDetermined:
-            locationManager.requestWhenInUseAuthorization()
-        }
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+
+        let geoCoder = CLGeocoder()
+        geoCoder.geocodeAddressString(storage.address, completionHandler: { [weak self] (placemarks, error) in
+            guard let self = self, error == nil else {
+                return
+            }
+
+            if let placemarks = placemarks { // array of placemarks (geocodes/coordinates of address)
+                // get first placemark
+                let placemark = placemarks[0]
+                // add annotation
+                let annotation = MKPointAnnotation()
+                annotation.title = self.storage.name
+
+                if let location = placemark.location {
+                    annotation.coordinate = location.coordinate
+                    // display annotation
+                    self.mapKitView.showAnnotations([annotation], animated: true) // show pin
+                    self.mapKitView.selectAnnotation(annotation, animated: true) // show buble
+                }
+            }
+        })
+
+        storageNameLabel.text = storage.name
+        storageAddressLabel.text = storage.address
     }
 
     func showAlertLocation(title: String, message: String?, url: URL?){
@@ -116,20 +121,5 @@ class StorageDetailsViewController: UIViewController {
         
         present(alert, animated: true, completion: nil)
     }
-}
-
-extension StorageDetailsViewController : CLLocationManagerDelegate {
-    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        if let location = locations.last?.coordinate{
-            let region = MKCoordinateRegion(center: location, latitudinalMeters: 2000, longitudinalMeters: 2000)
-            mapKitView.setRegion(region, animated: true)
-        }
-    }
-    func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
-        checkAuthorization()
-    }
-}
-extension StorageDetailsViewController : MKMapViewDelegate {
-    
 }
 

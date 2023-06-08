@@ -72,9 +72,9 @@ class StorageCell: UITableViewCell {
     }
     
     
-    func configure(contact: Storage) {
-        avatar.image = contact.image
-        nameLabel.text = contact.name
-        descriptionLabel.text = contact.description
+    func configure(storage: Storage) {
+        avatar.image = storage.image
+        nameLabel.text = storage.name
+        descriptionLabel.text = storage.address
     }
 }

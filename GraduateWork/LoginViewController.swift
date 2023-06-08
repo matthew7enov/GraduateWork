@@ -6,9 +6,10 @@
 //
 
 import UIKit
+import SVProgressHUD
 
 class LoginViewController: UIViewController {
-
+    let userService = UserService.shared
     
     var login: UITextField = {
         
@@ -19,8 +20,8 @@ class LoginViewController: UIViewController {
         textField.layer.borderColor = UIColor.gray.cgColor
         
         textField.borderStyle = .roundedRect
-        textField.placeholder = "login"
-        textField.keyboardType = .default
+        textField.placeholder = "e-mail"
+        textField.keyboardType = .emailAddress
         textField.keyboardAppearance = .dark
         textField.clearButtonMode = .whileEditing
         textField.returnKeyType = .done
@@ -104,18 +105,19 @@ class LoginViewController: UIViewController {
     }
     
     @objc func pushButtonAction() {
-        let tabBarController = UITabBarController()
-        let controller = TableViewController()
-        let navigation =  UINavigationController.init(rootViewController: controller)
-        let userController = UserAccountViewController()
-        navigation.tabBarItem.title = "Список"
-        navigation.tabBarItem.image = UIImage(systemName: "list.bullet.rectangle")
-        userController.tabBarItem.title = "Аккаунт"
-        userController.tabBarItem.image = UIImage(systemName: "person.fill")
-        tabBarController.viewControllers = [navigation, userController]
-        UIApplication.shared.keyWindow?.rootViewController = tabBarController
-//        navigationController?.pushViewController(tabBarController, animated: true)
-        
+        guard let email = login.text,
+              let password = password.text else {
+            return
+        }
+        SVProgressHUD.show()
+        userService.signIn(with: email, password: password) { success in
+            SVProgressHUD.dismiss()
+            if success {
+                AppCoordinator.shared.didLogin()
+            } else {
+                SVProgressHUD.showError(withStatus: "Something went wrong")
+            }
+        }
     }
 
 }

@@ -8,13 +8,23 @@
 import Foundation
 import UIKit
 
-struct ProductList {
+struct Product: Codable, Equatable {
+    let barCode: String
     let name: String
-    let image: UIImage
-    let descriptionCategory: String
-    let category: ProductCategory
+    let imageUrl: URL?
     let count: Int
+    let description: String
+    let category: ProductCategory
 }
+
+
+//struct ProductList {
+//    let name: String
+//    let image: UIImage
+//    let descriptionCategory: String
+//    let category: ProductCategory
+//    let count: Int
+//}
 
 struct Image {
     static let drop = "drop"
@@ -25,20 +35,20 @@ struct DescriptionProduct {
     static let description2 = ProductCategory.drinks
 }
 
-struct ProductListSource{
-    static func makeProductListView() -> [ProductList] {
-        [
-            .init(name: "Coca-cola 2L", image: .init(systemName: Image.drop)!, descriptionCategory: ProductCategory.drinks.rawValue, category: .drinks, count: 2),
-            .init(name: "Чипсы Lays (Краб)", image: .init(systemName: Image.popcorn)!, descriptionCategory: ProductCategory.snacks.rawValue, category: .snacks, count: 1),
-            .init(name: "Sprite 2L", image: .init(systemName: Image.drop)!, descriptionCategory: ProductCategory.drinks.rawValue, category: .drinks, count: 1)
-        ]
-    }
-    
-}
+//struct ProductListSource{
+//    static func makeProductListView() -> [ProductList] {
+//        [
+//            .init(name: "Coca-cola 2L", image: .init(systemName: Image.drop)!, descriptionCategory: ProductCategory.drinks.rawValue, category: .drinks, count: 2),
+//            .init(name: "Чипсы Lays (Краб)", image: .init(systemName: Image.popcorn)!, descriptionCategory: ProductCategory.snacks.rawValue, category: .snacks, count: 1),
+//            .init(name: "Sprite 2L", image: .init(systemName: Image.drop)!, descriptionCategory: ProductCategory.drinks.rawValue, category: .drinks, count: 1)
+//        ]
+//    }
+//
+//}
 
 enum ProductCategory: String, CaseIterable, Codable {
     case meat, drinks, fish, milkProducts, sweets, snacks, grocery, other
-    
+
     var stringValue: String {
         switch self {
         case .meat:

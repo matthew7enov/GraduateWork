@@ -6,19 +6,74 @@
 //
 
 import UIKit
+import SVProgressHUD
 
 class ProductListViewController: UIViewController, UISearchResultsUpdating, UISearchBarDelegate {
     
-    
+    let dataProvider = DataProvider.shared
 
-    var product = ProductListSource.makeProductListView()
+    var storage: Storage {
+        didSet {
+            filteredProducts = storage.products
+        }
+    }
+
     let tableView: UITableView = .init()
     let searchController = UISearchController()
-    var products = [ProductList]()
-    var filteredProducts = [ProductList]()
-    
-    
-    
+    var filteredProducts = [Product]()
+
+    init(storage: Storage) {
+        self.storage = storage
+        super.init(nibName: nil, bundle: nil)
+    }
+
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        view.backgroundColor = .white
+        title = storage.name
+        navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "plus"), style: .plain, target: self, action: #selector(scannerButtomPressed))
+        searchController.searchBar.placeholder = "Поиск"
+        navigationItem.searchController = searchController
+
+        setupProductListTableView()
+        initSearchController()
+        tableView.register(ProductCell.self, forCellReuseIdentifier: "ProductCell")
+        tableView.dataSource = self
+        tableView.delegate = self
+
+        dataProvider.setupProductListUpdatesListener(storageId: storage.id.uuidString) { [weak self] products in
+            guard let self = self else { return }
+            let difference = products.difference(from: self.storage.products)
+            self.storage.products = products
+            if difference.isEmpty {
+                self.tableView.reloadData()
+            } else {
+                var insertIndexPath = [IndexPath]()
+                var removeIndexPath = [IndexPath]()
+                for change in difference {
+                    switch change {
+                    case .insert(let offset, _, _):
+                        insertIndexPath.append(.init(row: offset, section: 0))
+                    case .remove(let offset, _, _):
+                        removeIndexPath.append(.init(row: offset, section: 0))
+                    }
+                }
+                self.tableView.performBatchUpdates { [weak self] in
+                    if !insertIndexPath.isEmpty {
+                        self?.tableView.insertRows(at: insertIndexPath, with: .automatic)
+                    }
+                    if !removeIndexPath.isEmpty {
+                        self?.tableView.deleteRows(at: removeIndexPath, with: .automatic)
+                    }
+                }
+            }
+        }
+    }
+
     func initSearchController(){
         searchController.loadViewIfNeeded()
         searchController.searchResultsUpdater = self
@@ -31,19 +86,18 @@ class ProductListViewController: UIViewController, UISearchResultsUpdating, UISe
         navigationItem.hidesSearchBarWhenScrolling = false
         searchController.searchBar.scopeButtonTitles = ["All","🥩","🥤","🍿","🥛","🍞","🍣","🍫","🥥"]
         searchController.searchBar.delegate = self
-        
     }
     
     func updateSearchResults(for searchController: UISearchController) {
-               let searchBar  = searchController.searchBar
-               let scopeButton = searchBar.scopeButtonTitles![searchBar.selectedScopeButtonIndex]
-               let searchText = searchBar.text!
+        let searchBar  = searchController.searchBar
+        let scopeButton = searchBar.scopeButtonTitles![searchBar.selectedScopeButtonIndex]
+        let searchText = searchBar.text!
 
-               filterForSearchTextAndScopeButton(searchText: searchText, scopeButton: scopeButton)
+        filterForSearchTextAndScopeButton(searchText: searchText, scopeButton: scopeButton)
     }
     
     func filterForSearchTextAndScopeButton(searchText: String, scopeButton: String = "All"){
-        filteredProducts = products.filter{
+        filteredProducts = storage.products.filter{
             let scopeMatch = (scopeButton == "All" || $0.category.emojiValue == scopeButton)
             if(searchController.searchBar.text != ""){
                 let searchTextMatch = $0.name.lowercased().contains(searchText.lowercased())
@@ -55,56 +109,60 @@ class ProductListViewController: UIViewController, UISearchResultsUpdating, UISe
         }
         tableView.reloadData()
     }
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        view.backgroundColor = .white
-        title = "Склад №2"
-        navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "plus"), style: .plain, target: self, action: #selector(scannerButtomPressed))
-        searchController.searchBar.placeholder = "Поиск"
-        navigationItem.searchController = searchController
-        
-        setupProductListTableView()
-        initSearchController()
-        tableView.register(ProductCell.self, forCellReuseIdentifier: "ProductCell")
-        tableView.dataSource = self
-        tableView.delegate = self
+
+    func move(product: Product, to storage: Storage) {
+        SVProgressHUD.show()
+        dataProvider.move(product: product, from: self.storage, to: storage) { _ in
+            SVProgressHUD.dismiss()
+        }
     }
 
     @objc func scannerButtomPressed() {
-        let controller = ScannerViewController()
+        let controller = ScannerViewController(storageId: storage.id.uuidString)
         navigationController?.pushViewController(controller, animated: true)
     }
-    
 }
 
 extension ProductListViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        product.count
+        filteredProducts.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-       guard let cell = tableView.dequeueReusableCell(withIdentifier: "ProductCell", for: indexPath) as? ProductCell else { fatalError() }
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "ProductCell", for: indexPath) as? ProductCell else { fatalError() }
+        let product = filteredProducts[indexPath.row]
+        cell.configure(product: product)
         
-        cell.configure(product: product[indexPath.row])
-        
-        cell.tapAction = {[weak self] in
-            let controller = StoragePickerViewController()
-            self?.navigationController?.pushViewController(controller, animated: true)
+        cell.tapAction = { [weak self] in
+            guard let self = self else {
+                return
+            }
+            let controller = StoragePickerViewController(currentStorage: self.storage)
+            controller.modalPresentationStyle = .overFullScreen
+            controller.modalTransitionStyle = .coverVertical
+            controller.didSelectStorage = { [weak self] storage in
+                guard let storage else {
+                    return
+                }
+                self?.move(product: product, to: storage)
+            }
+            self.present(controller, animated: true)
         }
         
         return cell
     }
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        product.remove(at: indexPath.row)
-        tableView.deleteRows(at: [indexPath], with: .left)
+//        products.remove(at: indexPath.row)
+//        tableView.deleteRows(at: [indexPath], with: .left)
     }
 }
 
 extension ProductListViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let controller = ProductDetailsViewController()
+        let controller = ProductDetailsViewController(storageId: storage.id.uuidString)
+        controller.mode = .edit
+        controller.product = filteredProducts[indexPath.row]
         navigationController?.pushViewController(controller, animated: true)
     }
 }

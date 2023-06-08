@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SDWebImage
 
 class ProductCell: UITableViewCell {
 
@@ -80,10 +81,10 @@ class ProductCell: UITableViewCell {
         tapAction?()
     }
     
-    func configure(product: ProductList) {
-        avatar.image = product.image
+    func configure(product: Product) {
+        avatar.sd_setImage(with: product.imageUrl)
         nameLabel.text = product.name
-        descriptionLabel.text = product.descriptionCategory
+        descriptionLabel.text = product.category.stringValue
         countLabel.text = "\(product.count) шт"
     }
 }

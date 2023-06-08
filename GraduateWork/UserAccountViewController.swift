@@ -9,6 +9,9 @@ import UIKit
 
 class UserAccountViewController: UIViewController {
 
+    let userService = UserService.shared
+    let appCoordinator = AppCoordinator.shared
+
     var personImage : UIImageView = {
         let image = UIImageView()
         image.clipsToBounds = true
@@ -31,17 +34,18 @@ class UserAccountViewController: UIViewController {
         button.setTitleColor(.black, for: .normal)
         return button
     }()
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
+
+    override func loadView() {
+        super.loadView()
+
         view.backgroundColor = .white
-        
+
         view.addSubview(personImage)
         view.addSubview(personLoginLabel)
         view.addSubview(exitButton)
-        
+
         personImage.translatesAutoresizingMaskIntoConstraints = false
-        
+
         NSLayoutConstraint.activate([
             personImage.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 30),
             personImage.widthAnchor.constraint(equalToConstant: 100),
@@ -49,16 +53,16 @@ class UserAccountViewController: UIViewController {
             personImage.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: -280),
             personImage.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: 0)
         ])
-        
+
         personLoginLabel.translatesAutoresizingMaskIntoConstraints = false
-        
+
         NSLayoutConstraint.activate([
             personLoginLabel.topAnchor.constraint(equalTo: personImage.bottomAnchor, constant: 30),
             personLoginLabel.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 125),
             personLoginLabel.widthAnchor.constraint(equalToConstant: 250),
             personLoginLabel.heightAnchor.constraint(equalToConstant: 34),
         ])
-        
+
         exitButton.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             exitButton.topAnchor.constraint(equalTo: personLoginLabel.bottomAnchor, constant: 30),
@@ -66,16 +70,17 @@ class UserAccountViewController: UIViewController {
             exitButton.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -50),
             exitButton.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 50)
         ])
-        
-        let image = UIImage(systemName: "person.crop.square")
-        personImage.image = image
-        
         exitButton.addTarget(self, action: #selector(exitButtonPressed), for: .touchUpInside)
     }
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+
+        personImage.image = UIImage(systemName: "person.crop.square")
+        personLoginLabel.text = userService.currentUser?.email
+    }
     @objc func exitButtonPressed() {
-        let controller = LoginViewController()
-//        navigationController?.pushViewController(controller, animated: true)
-        navigationController?.setViewControllers([controller], animated: true)
+        appCoordinator.logout()
     }
 
 }
