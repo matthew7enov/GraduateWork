@@ -14,7 +14,7 @@ class ProductListViewController: UIViewController, UISearchResultsUpdating, UISe
 
     var storage: Storage {
         didSet {
-            filteredProducts = storage.products
+            filteredProducts = getFilteredProducts()
         }
     }
 
@@ -95,7 +95,27 @@ class ProductListViewController: UIViewController, UISearchResultsUpdating, UISe
 
         filterForSearchTextAndScopeButton(searchText: searchText, scopeButton: scopeButton)
     }
-    
+
+    func getFilteredProducts() -> [Product] {
+        let searchBar  = searchController.searchBar
+        guard searchBar.scopeButtonTitles?.count ?? 0 > searchBar.selectedScopeButtonIndex else {
+            return storage.products
+        }
+        let scopeButton = searchBar.scopeButtonTitles![searchBar.selectedScopeButtonIndex]
+        let searchText = searchBar.text!
+
+        return storage.products.filter{
+            let scopeMatch = (scopeButton == "All" || $0.category.emojiValue == scopeButton)
+            if(searchController.searchBar.text != ""){
+                let searchTextMatch = $0.name.lowercased().contains(searchText.lowercased())
+
+                return scopeMatch && searchTextMatch
+            } else {
+                return scopeMatch
+            }
+        }
+    }
+
     func filterForSearchTextAndScopeButton(searchText: String, scopeButton: String = "All"){
         filteredProducts = storage.products.filter{
             let scopeMatch = (scopeButton == "All" || $0.category.emojiValue == scopeButton)
@@ -153,8 +173,7 @@ extension ProductListViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-//        products.remove(at: indexPath.row)
-//        tableView.deleteRows(at: [indexPath], with: .left)
+        dataProvider.removeProduct(filteredProducts[indexPath.row], storageId: storage.id.uuidString) { _ in }
     }
 }
 

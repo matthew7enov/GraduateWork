@@ -96,14 +96,15 @@ extension TableViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
        guard let cell = tableView.dequeueReusableCell(withIdentifier: "StorageCell", for: indexPath) as? StorageCell else { fatalError() }
+
+        let storage = storages[indexPath.row]
+        cell.configure(storage: storage)
         
-        cell.configure(storage: storages[indexPath.row])
-        
-        cell.tapAction = {[weak self] in
+        cell.tapAction = { [weak self] in
             guard let self = self else {
                 return
             }
-            let controller = StorageDetailsViewController(storage: self.storages[indexPath.row])
+            let controller = StorageDetailsViewController(storage: storage)
             self.navigationController?.pushViewController(controller, animated: true)
         }
         
@@ -111,8 +112,7 @@ extension TableViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        storages.remove(at: indexPath.row)
-        tableView.deleteRows(at: [indexPath], with: .left)
+        dataProvider.removeStorage(storages[indexPath.row]) { _ in }
     }
 }
 
@@ -123,12 +123,6 @@ extension TableViewController: UITableViewDelegate {
         navigationController?.pushViewController(controller, animated: true)
     }
 }
-//extension TableViewController {
-//    @objc func descriptionButtonPressed() {
-//        let controller = UserAccountViewController()
-//        navigationController?.pushViewController(controller, animated: true)
-//    }
-//}
 
 extension TableViewController {
     func setupTableView() {
